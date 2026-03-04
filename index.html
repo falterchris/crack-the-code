@@ -3,38 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>ADIDAS CRACK THE CODE</title>
+    <title>ADIDAS TRAIL CAMP</title>
     <style>
-        /* Hier ist das exakte Design-Gerüst von deiner Agenda-Seite */
-        :root { --black: #000000; --white: #ffffff; --grey: #ebedee; --accent: #E9D35D; }
-        body { font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); margin: 0; padding: 0; text-transform: uppercase; }
+        :root { 
+            --black: #000000; 
+            --white: #ffffff; 
+            --grey: #ebedee; 
+            --legal-bg: #f4f4f4;
+        }
         
-        /* Header identisch zur Agenda */
-        .header { background: var(--black); color: var(--white); padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .header img { height: 28px; width: auto; }
-        .header h1 { margin: 0; font-size: 1rem; letter-spacing: 2px; font-weight: 900; }
+        body { 
+            font-family: 'Arial Black', sans-serif; 
+            background: var(--white); 
+            color: var(--black); 
+            margin: 0; 
+            padding: 0; 
+            text-transform: uppercase; 
+        }
+        
+        /* Header - Schwarz mit weißer Schrift */
+        .header { 
+            background: var(--black); 
+            color: var(--white); 
+            padding: 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 15px; 
+        }
+        .header img { height: 24px; width: auto; filter: brightness(0) invert(1); }
+        .header h1 { margin: 0; font-size: 0.9rem; letter-spacing: 2px; font-weight: 900; }
 
         .container { padding: 40px 20px; max-width: 450px; margin: 0 auto; box-sizing: border-box; }
         
+        h2 { font-weight: 900; margin-bottom: 30px; font-size: 1.5rem; letter-spacing: -1px; }
+
         /* Form Design */
         .form-group { margin-bottom: 25px; }
-        label { display: block; font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px; }
+        label { display: block; font-size: 0.75rem; font-weight: 900; margin-bottom: 8px; letter-spacing: 1px; }
         
         input[type="text"] {
-            width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none;
+            width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; border-radius: 0;
         }
 
         .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; }
         .checkbox-group input { width: 22px; height: 22px; cursor: pointer; accent-color: var(--black); }
         .checkbox-group label { font-size: 0.7rem; font-weight: bold; line-height: 1.4; text-transform: none; }
 
+        /* Button - Jetzt Schwarz mit weißer Schrift */
         .submit-btn {
-            width: 100%; background: var(--accent); color: var(--black); border: 2px solid var(--black); padding: 18px; font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px; letter-spacing: 1px;
+            width: 100%; 
+            background: var(--black); 
+            color: var(--white); 
+            border: 2px solid var(--black); 
+            padding: 18px; 
+            font-weight: 900; 
+            font-size: 1.1rem; 
+            cursor: pointer; 
+            margin-top: 30px; 
+            letter-spacing: 1px;
+            transition: opacity 0.2s;
         }
+        .submit-btn:active { opacity: 0.8; }
         
-        /* Legal Content Dropdowns */
+        /* Legal Content */
         .legal-link { text-decoration: underline; cursor: pointer; }
-        .legal-content { display: none; background: #f4f4f4; padding: 15px; margin-top: 10px; font-size: 0.7rem; text-transform: none; border-left: 3px solid var(--accent); }
+        .legal-content { 
+            display: none; 
+            background: var(--legal-bg); 
+            padding: 15px; 
+            margin-top: 10px; 
+            font-size: 0.7rem; 
+            text-transform: none; 
+            border-left: 3px solid var(--black); 
+        }
     </style>
 </head>
 <body>
@@ -45,9 +87,10 @@
 </div>
 
 <div class="container">
-    <h2 style="font-weight: 900; margin-bottom: 30px;">GIVEAWAY ENTRY</h2>
+    <h2>GIVEAWAY ENTRY</h2>
     
     <form action="https://docs.google.com/forms/d/e/15H8isDIkgGuE-tn-8MrJd-ChoaLB_Tlx3DbDAXpugio/formResponse" method="POST">
+        
         <div class="form-group">
             <label>YOUR FULL NAME</label>
             <input type="text" name="entry.82421587" placeholder="NAME" required>
@@ -63,8 +106,15 @@
             <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
         </div>
 
-        <div id="tc" class="legal-content">T&C Text hier...</div>
-        <div id="pp" class="legal-content">Datenschutz Text hier...</div>
+        <div id="tc" class="legal-content">
+            <strong>Terms & Conditions:</strong><br>
+            Hier deinen T&C Text einfügen...
+        </div>
+        
+        <div id="pp" class="legal-content">
+            <strong>Privacy Policy:</strong><br>
+            Hier deinen Datenschutz Text einfügen...
+        </div>
 
         <button type="submit" class="submit-btn">ENTER NOW</button>
     </form>
@@ -73,10 +123,14 @@
 <script>
     function toggleLegal(id) {
         var el = document.getElementById(id);
+        var otherId = (id === 'tc') ? 'pp' : 'tc';
+        var otherEl = document.getElementById(otherId);
+        
+        // Schließe das andere Fenster, wenn eines geöffnet wird
+        otherEl.style.display = 'none';
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
 </script>
 
 </body>
-
 </html>
