@@ -66,17 +66,30 @@
         }
         .submit-btn:active { opacity: 0.8; }
         
-        /* Legal Content */
-        .legal-link { text-decoration: underline; cursor: pointer; }
-        .legal-content { 
-            display: none; 
-            background: var(--legal-bg); 
-            padding: 15px; 
-            margin-top: 10px; 
-            font-size: 0.7rem; 
-            text-transform: none; 
-            border-left: 3px solid var(--black); 
-        }
+        /* Legal Content Dropdowns - Jetzt mit dünnerer Schrift */
+.legal-link { 
+    text-decoration: underline; 
+    cursor: pointer; 
+}
+
+.legal-content { 
+    display: none; 
+    background: var(--legal-bg); 
+    padding: 20px; 
+    margin-top: 10px; 
+    font-size: 0.85rem; /* Etwas größer für bessere Lesbarkeit */
+    text-transform: none; /* Hebt das Großschreiben auf */
+    border-left: 3px solid var(--black); 
+    font-family: Arial, sans-serif; /* Wechsel von Arial Black zu normalem Arial */
+    font-weight: normal; /* Dünnere Schrift */
+    line-height: 1.5; /* Mehr Zeilenabstand */
+    color: #333; /* Dunkelgrau statt Tiefschwarz ist angenehmer zu lesen */
+}
+
+.legal-content strong {
+    font-weight: bold;
+    color: var(--black);
+}
     </style>
 </head>
 <body>
@@ -381,6 +394,7 @@
 
 </body>
 </html>
+
 
 
 
