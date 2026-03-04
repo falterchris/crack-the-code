@@ -2,39 +2,128 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADIDAS TEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>ADIDAS CRACK THE CODE</title>
     <style>
-        body { font-family: sans-serif; padding: 20px; text-transform: uppercase; }
-        .form-group { margin-bottom: 20px; }
-        input[type="text"] { width: 100%; padding: 10px; border: 2px solid black; }
-        .submit-btn { width: 100%; background: black; color: white; padding: 15px; font-weight: bold; border: none; cursor: pointer; }
+        :root { 
+            --black: #000000; --white: #ffffff; --legal-bg: #f4f4f4; --success-green: #00ff00;
+        }
+        body { 
+            font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); 
+            margin: 0; padding: 0; text-transform: uppercase; 
+        }
+        .header { 
+            background: var(--black); color: var(--white); padding: 20px; 
+            display: flex; align-items: center; justify-content: center; gap: 15px; 
+        }
+        .header img { height: 24px; width: auto; filter: brightness(0) invert(1); }
+        .header h1 { margin: 0; font-size: 0.9rem; letter-spacing: 2px; font-weight: 900; }
+
+        .container { padding: 40px 20px; max-width: 450px; margin: 0 auto; box-sizing: border-box; }
+        h2 { font-weight: 900; margin-bottom: 30px; font-size: 1.5rem; letter-spacing: -1px; }
+
+        .form-group { margin-bottom: 25px; }
+        label { display: block; font-size: 0.75rem; font-weight: 900; margin-bottom: 8px; letter-spacing: 1px; }
+        
+        input[type="text"] {
+            width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none; border-radius: 0;
+        }
+
+        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; }
+        .checkbox-group input { width: 22px; height: 22px; cursor: pointer; accent-color: var(--black); }
+        .checkbox-group label { font-size: 0.7rem; font-weight: bold; line-height: 1.4; text-transform: none; }
+
+        .submit-btn {
+            width: 100%; background: var(--black); color: var(--white); border: 2px solid var(--black); padding: 18px; 
+            font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px; letter-spacing: 1px;
+        }
+        
+        .legal-link { text-decoration: underline; cursor: pointer; }
+        .legal-content { 
+            display: none; background: var(--legal-bg); padding: 20px; margin-top: 10px; 
+            font-size: 0.85rem; text-transform: none; border-left: 3px solid var(--black); 
+            font-family: Arial, sans-serif; font-weight: normal; line-height: 1.5; color: #333; 
+        }
+
+        #success-msg { 
+            display: none; 
+            background: var(--success-green); 
+            color: black; 
+            padding: 30px 20px; 
+            font-weight: 900; 
+            text-align: center; 
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
 
-    <h2>DIAGNOSE-MODUS</h2>
-    <p>Wenn du klickst, öffnet sich Google. Wenn dort ein Fehler steht, sag mir bitte genau welchen!</p>
+<div class="header">
+    <img src="adidas-logo.png" alt="Logo">
+    <h1>ADIDAS CRACK THE CODE</h1>
+</div>
 
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLScpCLuya6PZZysQaxk2xzZ0xJRGpuw6kF6pDXsK3-f0Y2LKQw/formResponse" method="POST">
+<div class="container">
+    <div id="form-wrapper">
+        <h2>GIVEAWAY ENTRY</h2>
         
-        <div class="form-group">
-            <label>FULL NAME</label>
-            <input type="text" name="entry.82421587" required>
-        </div>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){showSuccess();}"></iframe>
 
-        <div class="form-group">
-            <label>ACCOMPANYING PERSON</label>
-            <input type="text" name="entry.1557201970" required>
-        </div>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLScpCLuya6PZZysQaxk2xzZ0xJRGpuw6kF6pDXsK3-f0Y2LKQw/formResponse" 
+              method="POST" 
+              target="hidden_iframe" 
+              onsubmit="submitted=true;">
+            
+            <div class="form-group">
+                <label>YOUR FULL NAME</label>
+                <input type="text" name="entry.82421587" placeholder="NAME" required>
+            </div>
 
-        <div class="form-group">
-            <input type="checkbox" name="entry.1455868757" value="YES" id="c1" required>
-            <label for="c1">I AGREE (MUST BE "YES" IN GOOGLE)</label>
-        </div>
+            <div class="form-group">
+                <label>ACCOMPANYING PERSON</label>
+                <input type="text" name="entry.1557201970" placeholder="NAME" required>
+            </div>
 
-        <button type="submit" class="submit-btn">TEST ABSCHICKEN</button>
-    </form>
+            <div class="checkbox-group">
+                <input type="checkbox" name="entry.1455868757" value="YES" id="c1" required>
+                <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
+            </div>
+
+            <div id="tc" class="legal-content">
+                <strong>TERMS & CONDITIONS</strong><br><br>
+                Hier deinen kompletten T&C Text einfügen...
+            </div>
+            
+            <div id="pp" class="legal-content">
+                <strong>PRIVACY NOTICE</strong><br><br>
+                Hier deinen kompletten Datenschutz Text einfügen...
+            </div>
+
+            <button type="submit" class="submit-btn">ENTER NOW</button>
+        </form>
+    </div>
+
+    <div id="success-msg">
+        THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.
+    </div>
+</div>
+
+<script>
+    var submitted = false;
+
+    function toggleLegal(id) {
+        var el = document.getElementById(id);
+        var otherId = (id === 'tc') ? 'pp' : 'tc';
+        document.getElementById(otherId).style.display = 'none';
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function showSuccess() {
+        document.getElementById('form-wrapper').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+        window.scrollTo(0, 0);
+    }
+</script>
 
 </body>
 </html>
