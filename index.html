@@ -5,43 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>ADIDAS CRACK THE CODE</title>
     <style>
-        :root { 
-            --black: #000000; --white: #ffffff; --legal-bg: #f4f4f4; --success-green: #00ff00;
-        }
-        body { 
-            font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); 
-            margin: 0; padding: 0; text-transform: uppercase; 
-        }
-        .header { 
-            background: var(--black); color: var(--white); padding: 20px; 
-            display: flex; align-items: center; justify-content: center; gap: 15px; 
-        }
+        :root { --black: #000000; --white: #ffffff; --legal-bg: #f4f4f4; --success-green: #00ff00; }
+        body { font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); margin: 0; padding: 0; text-transform: uppercase; }
+        .header { background: var(--black); color: var(--white); padding: 20px; display: flex; align-items: center; justify-content: center; gap: 15px; }
         .header img { height: 24px; filter: brightness(0) invert(1); }
         .header h1 { margin: 0; font-size: 0.9rem; letter-spacing: 2px; }
         .container { padding: 40px 20px; max-width: 450px; margin: 0 auto; }
         h2 { font-weight: 900; margin-bottom: 30px; font-size: 1.5rem; letter-spacing: -1px; }
         .form-group { margin-bottom: 25px; }
         label { display: block; font-size: 0.75rem; font-weight: 900; margin-bottom: 8px; }
-        input[type="text"] {
-            width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; border-radius: 0;
-        }
+        input[type="text"] { width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; border-radius: 0; }
         .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; }
         .checkbox-group input { width: 22px; height: 22px; cursor: pointer; }
         .checkbox-group label { font-size: 0.7rem; font-weight: bold; text-transform: none; line-height: 1.4; }
-        .submit-btn {
-            width: 100%; background: var(--black); color: var(--white); border: none; padding: 18px; 
-            font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px;
-        }
+        .submit-btn { width: 100%; background: var(--black); color: var(--white); border: none; padding: 18px; font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px; }
         .legal-link { text-decoration: underline; cursor: pointer; }
-        .legal-content { 
-            display: none; background: var(--legal-bg); padding: 20px; margin-top: 10px; 
-            font-size: 0.85rem; text-transform: none; border-left: 3px solid var(--black); 
-            font-family: Arial, sans-serif; font-weight: normal; color: #333; 
-        }
-        #success-msg { 
-            display: none; background: var(--success-green); color: black; padding: 30px 20px; 
-            font-weight: 900; text-align: center; border: 2px solid black;
-        }
+        .legal-content { display: none; background: var(--legal-bg); padding: 20px; margin-top: 10px; font-size: 0.85rem; text-transform: none; border-left: 3px solid var(--black); font-family: Arial, sans-serif; font-weight: normal; color: #333; }
+        #success-msg { display: none; background: var(--success-green); color: black; padding: 30px 20px; font-weight: 900; text-align: center; border: 2px solid black; }
     </style>
 </head>
 <body>
@@ -55,10 +35,12 @@
     <div id="form-wrapper">
         <h2>GIVEAWAY ENTRY</h2>
         
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted){showSuccess();}"></iframe>
+        <iframe name="secret_frame" id="secret_frame" style="display:none;"></iframe>
 
         <form action="https://docs.google.com/forms/d/e/1FAIpQLScpCLuya6PZZysQaxk2xzZ0xJRGpuw6kF6pDXsK3-f0Y2LKQw/formResponse" 
-              method="POST" target="hidden_iframe" id="giveaway-form" onsubmit="submitted=true;">
+              method="POST" 
+              target="secret_frame" 
+              id="giveaway-form">
             
             <div class="form-group">
                 <label>YOUR FULL NAME</label>
@@ -73,14 +55,14 @@
             <input type="hidden" name="entry.1455868757" value="YES">
 
             <div class="checkbox-group">
-                <input type="checkbox" id="c1" required>
-                <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
+                <input type="checkbox" id="visual_confirm" required>
+                <label for="visual_confirm">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
             </div>
 
-            <div id="tc" class="legal-content"><strong>TERMS & CONDITIONS</strong><br>Hier Text...</div>
-            <div id="pp" class="legal-content"><strong>PRIVACY POLICY</strong><br>Hier Text...</div>
+            <div id="tc" class="legal-content"><strong>TERMS & CONDITIONS</strong><br>Promotion adidas CRACK THE CODE...</div>
+            <div id="pp" class="legal-content"><strong>PRIVACY POLICY</strong><br>Data protection notice...</div>
 
-            <button type="submit" class="submit-btn">ENTER NOW</button>
+            <button type="submit" class="submit-btn" onclick="startSubmit()">ENTER NOW</button>
         </form>
     </div>
 
@@ -88,16 +70,22 @@
 </div>
 
 <script>
-    var submitted = false;
     function toggleLegal(id) {
         var el = document.getElementById(id);
         document.getElementById(id === 'tc' ? 'pp' : 'tc').style.display = 'none';
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
-    function showSuccess() {
-        document.getElementById('form-wrapper').style.display = 'none';
-        document.getElementById('success-msg').style.display = 'block';
-        window.scrollTo(0, 0);
+
+    function startSubmit() {
+        const form = document.getElementById('giveaway-form');
+        // Nur wenn das Formular valide ist (Checkbox geklickt, Namen drin)
+        if(form.checkValidity()) {
+            setTimeout(function() {
+                document.getElementById('form-wrapper').style.display = 'none';
+                document.getElementById('success-msg').style.display = 'block';
+                window.scrollTo(0, 0);
+            }, 500);
+        }
     }
 </script>
 
