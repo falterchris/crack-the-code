@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>ADIDAS TRAIL CAMP - GIVEAWAY</title>
+    <style>
+        /* Hier ist das exakte Design-Gerüst von deiner Agenda-Seite */
+        :root { --black: #000000; --white: #ffffff; --grey: #ebedee; --accent: #E9D35D; }
+        body { font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); margin: 0; padding: 0; text-transform: uppercase; }
+        
+        /* Header identisch zur Agenda */
+        .header { background: var(--black); color: var(--white); padding: 15px 20px; display: flex; align-items: center; justify-content: center; gap: 15px; }
+        .header img { height: 28px; width: auto; }
+        .header h1 { margin: 0; font-size: 1rem; letter-spacing: 2px; font-weight: 900; }
+
+        .container { padding: 40px 20px; max-width: 450px; margin: 0 auto; box-sizing: border-box; }
+        
+        /* Form Design */
+        .form-group { margin-bottom: 25px; }
+        label { display: block; font-size: 0.8rem; font-weight: 900; margin-bottom: 10px; letter-spacing: 1px; }
+        
+        input[type="text"] {
+            width: 100%; padding: 15px; border: 2px solid var(--black); font-family: inherit; font-size: 1rem; box-sizing: border-box; outline: none;
+        }
+
+        .checkbox-group { display: flex; align-items: flex-start; gap: 12px; margin-top: 30px; }
+        .checkbox-group input { width: 22px; height: 22px; cursor: pointer; accent-color: var(--black); }
+        .checkbox-group label { font-size: 0.7rem; font-weight: bold; line-height: 1.4; text-transform: none; }
+
+        .submit-btn {
+            width: 100%; background: var(--accent); color: var(--black); border: 2px solid var(--black); padding: 18px; font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px; letter-spacing: 1px;
+        }
+        
+        /* Legal Content Dropdowns */
+        .legal-link { text-decoration: underline; cursor: pointer; }
+        .legal-content { display: none; background: #f4f4f4; padding: 15px; margin-top: 10px; font-size: 0.7rem; text-transform: none; border-left: 3px solid var(--accent); }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <img src="adidas-logo.png" alt="Logo">
+    <h1>TRAIL CAMP 2026</h1>
+</div>
+
+<div class="container">
+    <h2 style="font-weight: 900; margin-bottom: 30px;">GIVEAWAY ENTRY</h2>
+    
+    <form action="https://docs.google.com/forms/d/e/DEINE_ID/formResponse" method="POST">
+        <div class="form-group">
+            <label>YOUR FULL NAME</label>
+            <input type="text" name="entry.82421587" placeholder="NAME" required>
+        </div>
+
+        <div class="form-group">
+            <label>ACCOMPANYING PERSON</label>
+            <input type="text" name="entry.1557201970" placeholder="NAME" required>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="c1" required>
+            <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
+        </div>
+
+        <div id="tc" class="legal-content">T&C Text hier...</div>
+        <div id="pp" class="legal-content">Datenschutz Text hier...</div>
+
+        <button type="submit" class="submit-btn">ENTER NOW</button>
+    </form>
+</div>
+
+<script>
+    function toggleLegal(id) {
+        var el = document.getElementById(id);
+        el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+    }
+</script>
+
+</body>
+</html>
