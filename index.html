@@ -92,10 +92,26 @@
                 <input type="checkbox" name="entry.1455868757" value="YES" id="c1" required>
                 <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
             </div>
+
+            <div id="tc" class="legal-content">
+                <strong>TERMS & CONDITIONS</strong><br><br>
+                Hier deinen kompletten T&C Text einfügen...
+            </div>
             
-            <button type="submit" class="submit-btn">ENTER NOW</button>
+            <div id="pp" class="legal-content">
+                <strong>PRIVACY NOTICE</strong><br><br>
+                Hier deinen kompletten Datenschutz Text einfügen...
+            </div>
+
+            <button type="submit" class="submit-btn">SUBMIT</button>
         </form>
     </div>
+
+    <div id="success-msg">
+        <div class="main-thanks">THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.</div>
+        <div class="sub-info">You can close this browser tab now.</div>
+    </div>
+</div>
 
     <div id="success-msg">
         <div class="main-thanks">THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.</div>
@@ -388,5 +404,6 @@
 
 </body>
 </html>
+
 
 
