@@ -10,6 +10,7 @@
             --white: #ffffff; 
             --grey: #ebedee; 
             --legal-bg: #f4f4f4;
+            --success-green: #00ff00;
         }
         
         body { 
@@ -21,7 +22,6 @@
             text-transform: uppercase; 
         }
         
-        /* Header - Schwarz mit weißer Schrift */
         .header { 
             background: var(--black); 
             color: var(--white); 
@@ -35,10 +35,8 @@
         .header h1 { margin: 0; font-size: 0.9rem; letter-spacing: 2px; font-weight: 900; }
 
         .container { padding: 40px 20px; max-width: 450px; margin: 0 auto; box-sizing: border-box; }
-        
         h2 { font-weight: 900; margin-bottom: 30px; font-size: 1.5rem; letter-spacing: -1px; }
 
-        /* Form Design */
         .form-group { margin-bottom: 25px; }
         label { display: block; font-size: 0.75rem; font-weight: 900; margin-bottom: 8px; letter-spacing: 1px; }
         
@@ -50,46 +48,27 @@
         .checkbox-group input { width: 22px; height: 22px; cursor: pointer; accent-color: var(--black); }
         .checkbox-group label { font-size: 0.7rem; font-weight: bold; line-height: 1.4; text-transform: none; }
 
-        /* Button - Jetzt Schwarz mit weißer Schrift */
         .submit-btn {
-            width: 100%; 
-            background: var(--black); 
-            color: var(--white); 
-            border: 2px solid var(--black); 
-            padding: 18px; 
-            font-weight: 900; 
-            font-size: 1.1rem; 
-            cursor: pointer; 
-            margin-top: 30px; 
-            letter-spacing: 1px;
-            transition: opacity 0.2s;
+            width: 100%; background: var(--black); color: var(--white); border: 2px solid var(--black); padding: 18px; 
+            font-weight: 900; font-size: 1.1rem; cursor: pointer; margin-top: 30px; letter-spacing: 1px;
         }
-        .submit-btn:active { opacity: 0.8; }
         
-        /* Legal Content Dropdowns - Jetzt mit dünnerer Schrift */
-.legal-link { 
-    text-decoration: underline; 
-    cursor: pointer; 
-}
+        .legal-link { text-decoration: underline; cursor: pointer; }
+        .legal-content { 
+            display: none; background: var(--legal-bg); padding: 20px; margin-top: 10px; 
+            font-size: 0.85rem; text-transform: none; border-left: 3px solid var(--black); 
+            font-family: Arial, sans-serif; font-weight: normal; line-height: 1.5; color: #333; 
+        }
 
-.legal-content { 
-    display: none; 
-    background: var(--legal-bg); 
-    padding: 20px; 
-    margin-top: 10px; 
-    font-size: 0.85rem; /* Etwas größer für bessere Lesbarkeit */
-    text-transform: none; /* Hebt das Großschreiben auf */
-    border-left: 3px solid var(--black); 
-    font-family: Arial, sans-serif; /* Wechsel von Arial Black zu normalem Arial */
-    font-weight: normal; /* Dünnere Schrift */
-    line-height: 1.5; /* Mehr Zeilenabstand */
-    color: #333; /* Dunkelgrau statt Tiefschwarz ist angenehmer zu lesen */
-}
-
-.legal-content strong {
-    font-weight: bold;
-    color: var(--black);
-}
+        #success-msg { 
+            display: none; 
+            background: var(--success-green); 
+            color: black; 
+            padding: 30px 20px; 
+            font-weight: 900; 
+            text-align: center; 
+            border: 2px solid black;
+        }
     </style>
 </head>
 <body>
@@ -100,26 +79,25 @@
 </div>
 
 <div class="container">
-    <h2>GIVEAWAY ENTRY</h2>
-    
-    <form action="https://docs.google.com/forms/d/e/15H8isDIkgGuE-tn-8MrJd-ChoaLB_Tlx3DbDAXpugio/formResponse" method="POST">
-        
-        <div class="form-group">
-            <label>YOUR FULL NAME</label>
-            <input type="text" name="entry.82421587" placeholder="NAME" required>
-        </div>
+    <div id="form-wrapper">
+        <h2>GIVEAWAY ENTRY</h2>
+        <form id="giveaway-form">
+            <div class="form-group">
+                <label>YOUR FULL NAME</label>
+                <input type="text" id="name1" name="entry.82421587" placeholder="NAME" required>
+            </div>
 
-        <div class="form-group">
-            <label>ACCOMPANYING PERSON</label>
-            <input type="text" name="entry.1557201970" placeholder="NAME" required>
-        </div>
+            <div class="form-group">
+                <label>ACCOMPANYING PERSON</label>
+                <input type="text" id="name2" name="entry.1557201970" placeholder="NAME" required>
+            </div>
 
-        <div class="checkbox-group">
-            <input type="checkbox" id="c1" required>
-            <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
-        </div>
+            <div class="checkbox-group">
+                <input type="checkbox" id="c1" required>
+                <label for="c1">I AGREE TO THE <span class="legal-link" onclick="toggleLegal('tc')">T&C</span> AND <span class="legal-link" onclick="toggleLegal('pp')">PRIVACY POLICY</span>.</label>
+            </div>
 
-        <div id="tc" class="legal-content">
+            <div id="tc" class="legal-content">
             <strong>Terms & Conditions:</strong><br>
 <h2>TERMS &amp; CONDITIONS – adidas CRACK THE CODE</h2>
 
@@ -373,30 +351,54 @@
 <p>
   You also have the right to lodge a complaint with a supervisory authority under <strong>Art. 77 GDPR</strong>.
 </p>
-            
-        </div>
+            </div>
 
-        <button type="submit" class="submit-btn">ENTER NOW</button>
-    </form>
+            <button type="submit" class="submit-btn" id="submit-button">ENTER NOW</button>
+        </form>
+    </div>
+
+    <div id="success-msg">
+        THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.
+    </div>
 </div>
 
 <script>
     function toggleLegal(id) {
         var el = document.getElementById(id);
         var otherId = (id === 'tc') ? 'pp' : 'tc';
-        var otherEl = document.getElementById(otherId);
-        
-        // Schließe das andere Fenster, wenn eines geöffnet wird
-        otherEl.style.display = 'none';
+        document.getElementById(otherId).style.display = 'none';
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
+
+    const form = document.getElementById('giveaway-form');
+    const wrapper = document.getElementById('form-wrapper');
+    const successMsg = document.getElementById('success-msg');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // DEINE ID IST HIER EINGEFÜGT
+        const FORM_ID = "1FAIpQLScpCLuya6PZZysQaxk2xzZ0xJRGpuw6kF6pDXsK3-f0Y2LKQw"; 
+        const url = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+        
+        const formData = new FormData();
+        formData.append('entry.82421587', document.getElementById('name1').value);
+        formData.append('entry.1557201970', document.getElementById('name2').value);
+
+        // Senden an Google Forms im Hintergrund
+        fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+        }).then(() => {
+            wrapper.style.display = 'none';
+            successMsg.style.display = 'block';
+            window.scrollTo(0, 0);
+        }).catch(() => {
+            alert("Submission error. Please try again.");
+        });
+    });
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
