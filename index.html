@@ -6,7 +6,7 @@
     <title>ADIDAS CRACK THE CODE</title>
     <style>
         :root { 
-            --black: #000000; --white: #ffffff; --legal-bg: #f4f4f4; --success-green: #00ff00;
+            --black: #000000; --white: #ffffff; --legal-bg: #f4f4f4;
         }
         body { 
             font-family: 'Arial Black', sans-serif; background: var(--white); color: var(--black); 
@@ -45,15 +45,16 @@
             font-family: Arial, sans-serif; font-weight: normal; line-height: 1.5; color: #333; 
         }
 
+        /* Erfolgsmeldung - Jetzt schlicht und ohne Grün/Rahmen */
         #success-msg { 
             display: none; 
-            background: var(--success-green); 
             color: black; 
-            padding: 30px 20px; 
+            padding: 40px 20px; 
             font-weight: 900; 
             text-align: center; 
-            border: 2px solid black;
         }
+        #success-msg .main-thanks { font-size: 1.5rem; margin-bottom: 15px; }
+        #success-msg .sub-info { font-size: 1rem; text-transform: none; font-family: Arial, sans-serif; font-weight: normal; color: #555; }
     </style>
 </head>
 <body>
@@ -104,7 +105,8 @@
     </div>
 
     <div id="success-msg">
-        THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.
+        <div class="main-thanks">THANK YOU!<br>YOUR ENTRY HAS BEEN SUBMITTED.</div>
+        <div class="sub-info">You can close this browser tab now.</div>
     </div>
 </div>
 
@@ -114,7 +116,7 @@
     function toggleLegal(id) {
         var el = document.getElementById(id);
         var otherId = (id === 'tc') ? 'pp' : 'tc';
-        document.getElementById(otherId).style.display = 'none';
+        if (document.getElementById(otherId)) document.getElementById(otherId).style.display = 'none';
         el.style.display = (el.style.display === 'block') ? 'none' : 'block';
     }
 
